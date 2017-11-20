@@ -1,0 +1,60 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+class Frame7 extends JFrame
+{
+        JPanel P;
+        JLabel La;
+
+        Frame7()
+        {
+                this.setTitle("ÈÙ ±¼¸®±â");
+                this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                P = new JPanel();
+                La = new JLabel("Love java");
+                La.setFont(new Font("Arial", Font.PLAIN, 10));
+
+                Mouse Mo = new Mouse();
+                La.addMouseWheelListener(Mo);
+
+                P.add(La);
+                this.add(P);
+                this.setVisible(true);
+                this.setSize(300, 300);
+        }
+
+
+
+
+
+        class Mouse implements MouseWheelListener
+        {
+                public void mouseWheelMoved(MouseWheelEvent e)
+                {
+                        int n = e.getWheelRotation();
+
+                        if( n > 0 && La.getFont().getSize() >5)
+                        {
+        La.setFont(new Font("Arial", Font.PLAIN, La.getFont().getSize()-5));
+                        }
+
+                        else
+                        {
+        La.setFont(new Font("Arial", Font.PLAIN, La.getFont().getSize()+5));
+                        }
+
+                }
+
+        }
+
+
+
+
+        public static void main(String[] args)
+        {
+                new Frame7();
+        }
+
+}
